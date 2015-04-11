@@ -3,12 +3,23 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>List of stories</h1>
 
-  {{> hello}}
+  {{ #each stories }}
+    {{> story}}
+  {{ /each }}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="story">
+	<p>Content: {{text}}</p>
+    <p>Age: {{age}}</p>
+    {{ #each votes}}
+    	{{faceType}}
+    {{/each}}
+    <form>
+    	<input type="radio" class="face" name="face" value="face1">
+    	<input type="radio" class="face" name="face" value="face2">
+    	<input type="radio" class="face" name="face" value="face3">
+    	<input type="radio" class="face" name="face" value="face4">
+    </form>
 </template>
