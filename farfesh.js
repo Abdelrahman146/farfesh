@@ -7,8 +7,9 @@ if (Meteor.isClient) {
         counter: function () {
             return Session.get("counter");
         },
-        count_faces: function () {
+        count_faces: function (story) {
             var face1 = 0, face2 = 0, face3 = 0, face4 = 0;
+            var votes =  story.votes;
             for (var i; i < votes.length; i++) {
                 if (votes[i].faceType == "face1") {
                     face1++;
@@ -20,7 +21,6 @@ if (Meteor.isClient) {
                     face4++;
                 }
             }
-            
         }
     });
 
@@ -32,7 +32,6 @@ if (Meteor.isClient) {
             var language = event.target.lang_type.value;
             Stories.insert({
                 storyText: story,
-                votes: [{faceType: faceType}],
                 count_votes: votes.length,
                 create_date: new Date(),
                 ipAddress: function () {
