@@ -1,7 +1,5 @@
 Stories = new Mongo.Collection("Stories");
 if (Meteor.isClient) {
-    // counter stars at 0
-    Session.setDefault('counter', 0);
 
     Template.body.helpers({
         stories: function () {
