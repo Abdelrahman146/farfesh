@@ -21,6 +21,7 @@ if (Meteor.isClient) {
                 }
             }
         }
+
     });
 
     Template.body.events({
@@ -31,20 +32,17 @@ if (Meteor.isClient) {
             });
         },
         'submit .new-story': function(event) {
-            var story = event.target.story-text.value;
+            var story = event.target.storyText.value;
             var age = event.target.age.value;
-            var faceType = event.target.faceType.value;
-            var language = event.target.lang_type.value;
+            var language = event.target.languageType.value;
             Stories.insert({
                 storyText: story,
-                count_votes: votes.length,
                 create_date: new Date(),
                 ipAddress: function () {
                     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
                     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     xmlhttp.open("GET", "http://api.hostip.info/get_html.php", false);
                     xmlhttp.send();
-
                     hostipInfo = xmlhttp.responseText.split("\n");
 
                     for (i = 0; hostipInfo.length >= i; i++) {
@@ -55,7 +53,7 @@ if (Meteor.isClient) {
                 age: age,
                 language: language
             });
-        },
+        }
     });
 
     Template.story.events({
